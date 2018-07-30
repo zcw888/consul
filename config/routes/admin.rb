@@ -236,6 +236,7 @@ namespace :admin do
     resources :documents, only: [:index, :new, :create, :destroy]
   end
 
+  resources :tenants, only: [:index, :new, :create, :edit, :update, :destroy]
   resource :homepage, controller: :homepage, only: [:show]
 
   namespace :widget do
