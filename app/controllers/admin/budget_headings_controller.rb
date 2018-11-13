@@ -3,9 +3,9 @@ class Admin::BudgetHeadingsController < Admin::BaseController
   include FeatureFlags
   feature_flag :budgets
 
-  before_action :load_budget
-  before_action :load_group
-  before_action :load_heading, except: [:index, :new, :create]
+  before_action :load_budget, except: [:json_data]
+  before_action :load_group, except: [:json_data]
+  before_action :load_heading, except: [:index, :new, :create, :json_data]
 
   def index
     @headings = @group.headings.order(:id)
@@ -63,7 +63,7 @@ class Admin::BudgetHeadingsController < Admin::BaseController
     end
 
     def budget_heading_params
-      valid_attributes = [:price, :population, :allow_custom_content, :latitude, :longitude]
+      valid_attributes = [:price, :population, :allow_custom_content, :latitude, :longitude, :geography_id]
       params.require(:budget_heading).permit(*valid_attributes, translation_params(Budget::Heading))
     end
 end

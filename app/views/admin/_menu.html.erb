@@ -275,6 +275,10 @@
             <%= t("admin.menu.administrator_tasks") %>
           <% end %>
         </li>
+
+        <li <%= "class=is-active" if controller_name == "content_blocks" %>>
+          <%= link_to t("admin.menu.geographies"), admin_geographies_path %>
+        </li>
       </ul>
     </li>
   </ul>

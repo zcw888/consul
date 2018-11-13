@@ -64,6 +64,10 @@ FactoryBot.define do
     trait :drafting_budget do
       association :budget, factory: [:budget, :drafting]
     end
+
+    trait :accepting_budget do
+      association :budget, factory: [:budget, :accepting]
+    end
   end
 
   factory :budget_heading, class: "Budget::Heading" do
@@ -85,6 +89,10 @@ FactoryBot.define do
         investment = create(:budget_investment, :winner, heading: heading)
         create(:milestone, milestoneable: investment)
       end
+    end
+
+    trait :accepting_budget do
+      association :group, factory: [:budget_group, :accepting_budget]
     end
   end
 

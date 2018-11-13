@@ -22,6 +22,7 @@ class Budget
     end
 
     belongs_to :group
+    belongs_to :geography
 
     has_many :investments
     has_many :content_blocks
@@ -52,6 +53,10 @@ class Budget
 
     def can_be_deleted?
       investments.empty?
+    end
+
+    def whole_name
+      "#{group.budget.name} - #{name}"
     end
 
     private
