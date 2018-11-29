@@ -2,6 +2,7 @@ class DeviseMailer < Devise::Mailer
   helper :application, :settings
   include Devise::Controllers::UrlHelpers
   default template_path: "devise/mailer"
+  default reply_to: ->(*) { Setting.full_email_address }
 
   protected
 
