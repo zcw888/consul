@@ -1,5 +1,5 @@
 class CensusCaller
-  def call(document_type, document_number, date_of_birth, postal_code, tenant = Tenant.find_by(subdomain: Apartment::Tenant.current))
+  def call(document_type, document_number, date_of_birth, postal_code, tenant = Tenant.current)
     if Setting["feature.remote_census"].present?
       response = RemoteCensusApi.new.call(document_type, document_number, date_of_birth, postal_code)
     else
