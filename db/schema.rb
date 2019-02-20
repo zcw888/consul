@@ -527,6 +527,7 @@ ActiveRecord::Schema.define(version: 20200602233844) do
     t.string "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string "tenant"
     t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
@@ -1428,6 +1429,7 @@ ActiveRecord::Schema.define(version: 20200602233844) do
     t.string "institution_code_census"
     t.string "portal_name_census"
     t.string "user_code_census"
+    t.string "server_name"
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|

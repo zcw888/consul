@@ -1,5 +1,6 @@
 class Tenant < ActiveRecord::Base
-  validates :subdomain, uniqueness: true
+  validates :subdomain, presence: true, uniqueness: true
+  validates :server_name, presence: true
 
   after_create :create_tenant
   after_destroy :destroy_tenant

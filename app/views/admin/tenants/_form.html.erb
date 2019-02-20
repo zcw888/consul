@@ -2,18 +2,24 @@
 
   <%= render "shared/errors", resource: @tenant %>
 
-  <div clas="row">
+  <div class="row">
     <div class="small-12 medium-6 large-4 column">
       <%= f.text_field :name, label: t("admin.tenants.tenant.name") %>
     </div>
-    <div class="small-12 medium-6 large-4 column">
+    <div class="small-12 medium-6 column">
       <%= f.text_field :title, label: t("admin.tenants.tenant.title") %>
     </div>
     <div class="small-12 medium-6 large-2 column">
+      <%= f.text_field :postal_code, label: t("admin.tenants.tenant.postal_code") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 large-4 column">
       <%= f.text_field :subdomain, label: t("admin.tenants.tenant.subdomain"), :readonly => !change_subdomain?(@tenant) %>
     </div>
-    <div class="small-12 medium-6 large-2 column">
-      <%= f.text_field :postal_code, label: t("admin.tenants.tenant.postal_code") %>
+    <div class="small-12 medium-8 column">
+      <%= f.text_field :server_name, label: t("admin.tenants.tenant.server_name") %>
     </div>
   </div>
 
