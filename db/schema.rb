@@ -1430,6 +1430,10 @@ ActiveRecord::Schema.define(version: 20200602233844) do
     t.string "portal_name_census"
     t.string "user_code_census"
     t.string "server_name"
+    t.string "twitter_key"
+    t.string "twitter_secret"
+    t.string "facebook_key"
+    t.string "facebook_secret"
   end
 
   create_table "topics", id: :serial, force: :cascade do |t|
