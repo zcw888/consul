@@ -1,5 +1,9 @@
 class UserSegments
   def self.segments
+    (regular_segments + geozones).to_h
+  end
+
+  def self.regular_segments
     %w[all_users
        administrators
        all_proposal_authors
@@ -8,7 +12,13 @@ class UserSegments
        feasible_and_undecided_investment_authors
        selected_investment_authors
        winner_investment_authors
-       not_supported_on_current_budget] + geozones
+       not_supported_on_current_budget].map do |name|
+      [name, I18n.t("admin.segment_recipient.#{name}")]
+    end
+  end
+
+  def self.segment_names
+    segments.keys
   end
 
   def self.all_users
@@ -58,7 +68,7 @@ class UserSegments
 
   def self.geozones
     if geozones_available?
-      Geozone.pluck(:name).map(&:parameterize).map(&:underscore).sort
+      Geozone.all.map { |geozone| [geozone.name.parameterize.underscore, geozone.name] }.sort
     else
       []
     end

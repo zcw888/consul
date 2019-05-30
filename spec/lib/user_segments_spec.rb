@@ -246,10 +246,10 @@ describe UserSegments do
     end
 
     it "includes geozones in available segments" do
-      expect(described_class.segments).to include("new_york")
-      expect(described_class.segments).to include("california")
-      expect(described_class.segments).to include("mars")
-      expect(described_class.segments).not_to include("jupiter")
+      expect(described_class.segment_names).to include("new_york")
+      expect(described_class.segment_names).to include("california")
+      expect(described_class.segment_names).to include("mars")
+      expect(described_class.segment_names).not_to include("jupiter")
     end
 
     it "returns users of a geozone" do
