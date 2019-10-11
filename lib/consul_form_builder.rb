@@ -51,10 +51,37 @@ class ConsulFormBuilder < FoundationRailsHelper::FormBuilder
     end
 
     def label_text(object, attribute, text)
+      label_text_without_required(object, attribute, text) + required_text(object, attribute)
+    end
+
+    def label_text_without_required(object, attribute, text)
       if text.nil? || text == true
         default_label_text(object, attribute)
       else
         text
+      end
+    end
+
+    def required_text(object, attribute)
+      validators = object.class.validators_on(attribute).select do |validator|
+        validator.kind == :presence && validator.options.slice(:if, :unless).empty?
+      end.select do |validator|
+        case validator.options[:on]
+        when :create
+          object.new_record?
+        when :update
+          !object.new_record?
+        else
+          true
+        end
+      end
+
+      if validators.any?
+        content_tag(:abbr, I18n.t("validations.required_text"),
+                    title: I18n.t("validations.required_title"),
+                    class: "required")
+      else
+        ""
       end
     end
 

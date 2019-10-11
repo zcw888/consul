@@ -1034,6 +1034,11 @@ form {
     font-size: $base-font-size;
     font-weight: bold;
     line-height: $line-height;
+
+    .required {
+      color: orange;
+      margin-left: 0.1rem;
+    }
   }
 
   fieldset legend {
