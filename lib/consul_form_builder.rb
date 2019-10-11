@@ -21,7 +21,9 @@ class ConsulFormBuilder < FoundationRailsHelper::FormBuilder
 
   def check_box(attribute, options = {})
     if options[:label] != false
-      label = content_tag(:span, sanitize(label_text(object, attribute, options[:label])), class: "checkbox")
+      label = content_tag(:span,
+                          sanitize(label_text_without_required(object, attribute, options[:label])),
+                          class: "checkbox")
 
       super(attribute, options.merge(label: label, label_options: label_options_for(options)))
     else
@@ -64,7 +66,7 @@ class ConsulFormBuilder < FoundationRailsHelper::FormBuilder
 
     def required_text(object, attribute)
       validators = object.class.validators_on(attribute).select do |validator|
-        validator.kind == :presence && validator.options.slice(:if, :unless).empty?
+        [:presence, :acceptance].include?(validator.kind) && validator.options.slice(:if, :unless).empty?
       end.select do |validator|
         case validator.options[:on]
         when :create
