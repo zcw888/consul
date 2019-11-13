@@ -370,6 +370,9 @@ Security/Eval:
 Security/JSONLoad:
   Enabled: true
 
+Security/Open:
+  Enabled: true
+
 Security/YAMLLoad:
   Enabled: true
 
