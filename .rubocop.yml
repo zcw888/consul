@@ -179,6 +179,9 @@ Lint/StringConversionInInterpolation:
 Lint/UselessAssignment:
   Enabled: true
 
+Lint/Void:
+  Enabled: true
+
 Metrics/LineLength:
   Max: 110
   Severity: refactor
