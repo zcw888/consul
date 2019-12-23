@@ -6,7 +6,7 @@ namespace :db do
 
     puts "Asigning Users to Comments"
     user_erased = User.create!(username: "Usuario eliminado",
-                                email: "usuario_borrado@consul.dev",
+                                email: "usuarioborrado@consul.dev",
                                 password: "12345678",
                                 password_confirmation: "12345678",
                                 confirmed_at: Time.current,
@@ -19,6 +19,16 @@ namespace :db do
       comment = Comment.find_by(id: attributes["comment"].to_i)
       if comment.present?
         if attributes["usernumber"].present?
+          attributes["usernumber"] = attributes["usernumber"].to_i
+          unless User.find_by(id: attributes["usernumber"])
+            User.create!(id: attributes["usernumber"],
+                       username: "usuario_#{attributes["usernumber"]}",
+                       email: "usuario_#{attributes["usernumber"]}@consul.dev",
+                       password: "12345678",
+                       password_confirmation: "12345678",
+                       confirmed_at: Time.current,
+                       terms_of_service: "1")
+          end
           unless comment.user_id == attributes["usernumber"]
             comment.update_columns(user_id: attributes["usernumber"])
           end
