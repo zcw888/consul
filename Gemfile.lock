@@ -1,4 +1,11 @@
 GIT
+  remote: https://github.com/jwickard/omniauth-wordpress-oauth2-plugin
+  revision: 0e522573a7cc91fad85b091f63015abf8f8a4028
+  specs:
+    omniauth-wordpress_hosted (0.0.5)
+      omniauth-oauth2
+
+GIT
   remote: https://github.com/phatworx/devise_security_extension.git
   revision: b2ee978af7d49f0fb0e7271c6ac074dfb4d39353
   specs:
@@ -634,6 +641,7 @@ DEPENDENCIES
   graphiql-rails (~> 1.4.1)
   graphql (~> 1.7.8)
   groupdate (~> 3.2.0)
+  httparty
   i18n-tasks (~> 0.9.29)
   initialjs-rails (~> 0.2.0.5)
   invisible_captcha (~> 0.10.0)
@@ -650,6 +658,7 @@ DEPENDENCIES
   omniauth-facebook (~> 4.0.0)
   omniauth-google-oauth2 (~> 0.4.0)
   omniauth-twitter (~> 1.4.0)
+  omniauth-wordpress_hosted!
   paperclip (~> 5.2.1)
   paranoia (~> 2.4.2)
   pg (~> 0.21.0)

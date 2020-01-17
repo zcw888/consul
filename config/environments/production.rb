@@ -101,4 +101,9 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  config.wordpress_oauth_provider_authorize_endpoint = Rails.application.secrets.wordpress_oauth_provider_authorize_endpoint
+  config.wordpress_oauth_provider_token_endpoint = Rails.application.secrets.wordpress_oauth_provider_token_endpoint
+  config.wordpress_oauth_redirect_uri = Rails.application.secrets.wordpress_oauth_redirect_uri
+  config.wordpress_oauth_provider_me_endpoint = Rails.application.secrets.wordpress_oauth_provider_me_endpoint
 end
