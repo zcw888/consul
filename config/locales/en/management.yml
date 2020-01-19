@@ -1,5 +1,7 @@
 en:
   management:
+    header:
+      title: Management
     account:
       menu:
         reset_password_email: Reset password via email

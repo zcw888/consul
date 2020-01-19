@@ -1,5 +1,7 @@
 es:
   management:
+    header:
+      title: Gestión
     account:
       menu:
         reset_password_email: Restablecer contraseña via email

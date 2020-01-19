@@ -41,9 +41,9 @@
       <div id="responsive_menu">
         <div class="top-bar-right">
           <ul class="dropdown menu" data-dropdown-menu>
-            <%= render "shared/admin_login_items" %>
-            <%= render "layouts/notification_item" %>
-            <%= render "devise/menu/login_items" %>
+            <%= render "shared/admin_login_items", current_user: current_user %>
+            <%= render "layouts/notification_item", current_user: current_user %>
+            <%= render "devise/menu/login_items", current_user: current_user %>
           </ul>
         </div>
       </div>
