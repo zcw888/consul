@@ -3,9 +3,9 @@ class Admin::BudgetHeadingsController < Admin::BaseController
   include FeatureFlags
   feature_flag :budgets
 
-  before_action :load_budget, except: [:json_data]
-  before_action :load_group, except: [:json_data]
-  before_action :load_heading, except: [:index, :new, :create, :json_data]
+  before_action :load_budget
+  before_action :load_group
+  before_action :load_heading, except: [:index, :new, :create]
 
   def index
     @headings = @group.headings.order(:id)
