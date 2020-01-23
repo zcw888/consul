@@ -94,7 +94,8 @@ describe "Admin geographies" do
 
     expect(page).not_to have_content "Geography created successfully!"
     expect(page).to have_css(".is-invalid-label", text: "Geojson")
-    expect(page).to have_css("small.form-error", text: 'The GeoJSON provided does not follow the correct format. It must follow the "Polygon" or "MultiPolygon" type format.')
+    expect(page).to have_css("small.form-error", text: "The GeoJSON provided does not follow the correct format. " \
+                                                       'It must follow the "Polygon" or "MultiPolygon" type format.')
   end
 
   scenario "Edit geography with no associated headings" do
@@ -107,6 +108,7 @@ describe "Admin geographies" do
     fill_in "geography_name", with: "New geography name"
 
     click_button "Update Geography"
+    expect(page).to have_content "Geography updated successfully!"
 
     within("#geography_#{geography.id}") do
       expect(page).to have_content "New geography name"
@@ -124,6 +126,7 @@ describe "Admin geographies" do
     fill_in "geography_name", with: "New geography name"
 
     click_button "Update Geography"
+    expect(page).to have_content "Geography updated successfully!"
 
     within("#geography_#{geography.id}") do
       expect(page).to have_content "New geography name"
@@ -143,7 +146,8 @@ describe "Admin geographies" do
 
     expect(page).not_to have_content "Geography updated successfully!"
     expect(page).to have_css(".is-invalid-label", text: "Geojson")
-    expect(page).to have_css("small.form-error", text: 'The GeoJSON provided does not follow the correct format. It must follow the "Polygon" or "MultiPolygon" type format.')
+    expect(page).to have_css("small.form-error", text: "The GeoJSON provided does not follow the correct format. " \
+                                                       'It must follow the "Polygon" or "MultiPolygon" type format.')
   end
 
   scenario "Delete geography with no associated headings" do
@@ -155,7 +159,7 @@ describe "Admin geographies" do
 
     within("#geography_#{geography.id}") { click_link "Delete" }
 
-    expect(page).to have_content "Geography successfully deleted"
+    expect(page).to have_content "Geography deleted successfully!"
     expect(page).not_to have_content("Delete me!")
     expect(Geography.where(id: geography.id)).to be_empty
   end
@@ -171,7 +175,7 @@ describe "Admin geographies" do
 
     within("#geography_#{geography.id}") { click_link "Delete" }
 
-    expect(page).to have_content "Geography successfully deleted"
+    expect(page).to have_content "Geography deleted successfully!"
     expect(page).not_to have_content("Delete me!")
     expect(page).not_to have_content(heading_1.name_with_budget)
     expect(Geography.where(id: geography.id)).to be_empty
