@@ -57,9 +57,9 @@
         if (polygon_data.heading_id) {
           polygon.on("click", openPolygonPopup);
           polygon.options["heading_id"] = polygon_data.heading_id;
-          polygon.options["fillOpacity"] = 0.3;
+          polygon.options.fillOpacity = 0.3;
         } else {
-          polygon.options["fillOpacity"] = 0;
+          polygon.options.fillOpacity = 0;
         }
         polygon.addTo(map);
         return polygon;
@@ -142,7 +142,7 @@
       }
       if (addGeographyPolygons) {
         for (var i = 0; i < addGeographyPolygons.length; i++) {
-          var polygon = createPolygon(addGeographyPolygons[i]);
+          createPolygon(addGeographyPolygons[i]);
         }
       }
     },

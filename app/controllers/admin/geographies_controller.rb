@@ -3,7 +3,7 @@ class Admin::GeographiesController < Admin::BaseController
   before_action :set_headings, only: [:new, :edit, :update, :create]
 
   def index
-    @geographies = Geography.all.order("LOWER(name)")
+    @geographies = Geography.all
   end
 
   def new
@@ -32,7 +32,7 @@ class Admin::GeographiesController < Admin::BaseController
   end
 
   def destroy
-    @geography.destroy
+    @geography.destroy!
     redirect_to admin_geographies_path, notice: t("admin.geographies.delete.success")
   end
 
@@ -43,7 +43,7 @@ class Admin::GeographiesController < Admin::BaseController
     end
 
     def set_headings
-      @headings = Budget::Heading.order(:name)
+      @headings = Budget::Heading.all
     end
 
     def geography_params
