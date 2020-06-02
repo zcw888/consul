@@ -354,7 +354,7 @@ en:
       index:
         back: Go back to %{org}
         title: Administration
-        description: Welcome to the %{org} admin panel.
+        description: Welcome to the (%{org} Tenant) admin panel.
       actions:
         index:
           description: "When users create proposals they can access a dashboard of their proposal, where you can propose resources and recommendations to get support for their idea."
